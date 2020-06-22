@@ -36,6 +36,7 @@ names(merged_x) <- features[selected_features[,1],2]
 
 # 5.From the data set in step 4, creates a second, independent tidy data set with the average of each
 # variable for each activity and each subject.
+library(dplyr)
 merged_global <- cbind(merged_x,activity =merged_y[,1], subject =merged_subject[,1])
 merged_global_grouped <- merged_global %>% group_by(activity,subject) %>% summarize_each(funs = mean)
 write.table(merged_global,'Assignment/TidyData.txt',row.names = F,col.names = T)
